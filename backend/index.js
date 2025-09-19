@@ -23,11 +23,13 @@ const options = {
         },
         servers: [
             {
-                url: 'http://localhost:3000/'
+                url: 'http://localhost:3000/',  /* Local dev */
+                description: 'Local Server'
             },
-            // {
-            //     url: 'https://jsonplaceholder.typicode.com/'
-            // }
+            {
+                url: 'https://swagger-api-documentation.onrender.com/',  /* deployed on render */
+                description: 'Production server'
+            }
         ]
     },
     apis: ['./index.js', './routes/*.js'] // file name where all apis are listed
