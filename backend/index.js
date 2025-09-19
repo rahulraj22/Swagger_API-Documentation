@@ -35,7 +35,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // api rout
 // MongoDB connection
 const url = 'mongodb://127.0.0.1:27017/mydb'; // it will not instantly create DB (on using mongoose): MongoDB does lazy db creation
 // It will create mongo db only when some operations performed on it.
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 mongoose.connect(url)
     .then(() => {
         console.log('MongoDB connected successfully.');
