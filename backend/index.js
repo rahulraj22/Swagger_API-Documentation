@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -33,7 +34,9 @@ const swaggerSpec = swaggerJSDoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // api route for swagger ui
 
 // MongoDB connection
-const url = 'mongodb://127.0.0.1:27017/mydb'; // it will not instantly create DB (on using mongoose): MongoDB does lazy db creation
+const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
+console.log(MONGODB_PASSWORD, " password");
+const url = `mongodb+srv://admin-rahul:${MONGODB_PASSWORD}@cluster0.zskclen.mongodb.net/todolistDB?retryWrites=true&w=majority&appName=Cluster0`; // it will not instantly create DB (on using mongoose): MongoDB does lazy db creation
 // It will create mongo db only when some operations performed on it.
 const PORT = process.env.PORT || 3000;
 mongoose.connect(url)
