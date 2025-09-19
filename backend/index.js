@@ -10,6 +10,7 @@ const app = express();
 
 // Middleware to parse json payload/body
 app.use(express.json());
+app.use(cors());
 
 // swagger options
 const options = {
